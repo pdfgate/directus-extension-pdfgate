@@ -1,0 +1,73 @@
+{
+  "name": "@pdfgate/directus-extension-pdfgate",
+  "version": "1.0.1",
+  "description": "Generate PDFs from HTML or a URL inside Directus Flows with the PDFGate API.",
+  "icon": "picture_as_pdf",
+  "keywords": [
+    "directus",
+    "directus-extension",
+    "directus-extension-operation",
+    "pdfgate",
+    "pdf",
+    "html-to-pdf",
+    "url-to-pdf",
+    "flows"
+  ],
+  "homepage": "https://pdfgate.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pdfgate/directus-extension-pdfgate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pdfgate/directus-extension-pdfgate/issues"
+  },
+  "author": "PDFGate <support@pdfgate.com> (https://pdfgate.com)",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "directus:extension": {
+    "type": "operation",
+    "path": {
+      "app": "dist/app.js",
+      "api": "dist/api.js"
+    },
+    "source": {
+      "app": "src/app.ts",
+      "api": "src/api.ts"
+    },
+    "host": "^10.10.0 || ^11.0.0 || ^12.0.0",
+    "sandbox": {
+      "enabled": true,
+      "requestedScopes": {
+        "request": {
+          "methods": [
+            "POST"
+          ],
+          "urls": [
+            "https://api.pdfgate.com/*",
+            "https://api-sandbox.pdfgate.com/*"
+          ]
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "directus-extension build",
+    "dev": "directus-extension build -w --no-minify",
+    "link": "directus-extension link",
+    "validate": "directus-extension validate",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@directus/extensions": "4.1.0",
+    "@directus/extensions-sdk": "^18.1.0",
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2",
+    "vue": "3.5.43"
+  }
+}
